@@ -1,0 +1,35 @@
+{
+  "eslint.packageManager": "yarn",
+  "eslint.run": "onSave",
+  "javascript.format.enable": false,
+  "javascript.validate.enable": true,
+  "javascript.suggestionActions.enabled": true,
+  "editor.formatOnType": true,
+  "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.watcherExclude": {
+    "**/.next/**": true,
+    "**/bin/**": true,
+    "**/docker/**": true,
+    "**/docs/**": true,
+    "**/node_module/**": true,
+    "**/out/**": true,
+    "**/public/**": true,
+    "**/styles/**": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
