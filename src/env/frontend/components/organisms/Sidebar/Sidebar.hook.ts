@@ -1,9 +1,13 @@
-export const useSidebar = (props: { pages: TPages; currentPage: TPage }) => {
-  const items = Object.entries(props.pages).map(([, { path, meta }]) => {
+import { useConfig } from '@/hooks/config';
+
+export const useSidebar = (props: { page: TPage }) => {
+  const { pageConfig } = useConfig();
+
+  const items = Object.entries(pageConfig).map(([, { path, meta }]) => {
     return {
       href: path,
       label: meta.title,
-      current: path === props.currentPage.path,
+      current: path === props.page.path,
     };
   });
 

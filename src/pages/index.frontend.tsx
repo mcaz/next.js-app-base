@@ -12,8 +12,7 @@ export const Page: TPageProps = (ctx) => {
   });
 
   const sidebar = O.useSidebar({
-    pages: ctx.pages,
-    currentPage: ctx.page,
+    page: ctx.page,
   });
 
   return (

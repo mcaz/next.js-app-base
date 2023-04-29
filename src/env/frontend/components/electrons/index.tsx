@@ -18,7 +18,6 @@ import { Head } from './Head';
 import { Header } from './Header';
 import { Heading } from './Heading';
 import { Image } from './Image';
-import { Input } from './Input';
 import { Iteration } from './Iteration';
 import { Label } from './Label';
 import { Link } from './Link';
@@ -79,7 +78,6 @@ export const E = {
   Header,
   Heading,
   Image,
-  Input,
   Iteration,
   Label,
   Link,
