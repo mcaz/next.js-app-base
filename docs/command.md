@@ -2,7 +2,7 @@
 
 ## Install
 ```
-$ npm install
+$ yarn install
 ```
 
 ## 開発

@@ -7,5 +7,3 @@ export const formConfig = {
     smartPhone: /^(050|070|080|090)\d{8}$/,
   },
 } as const;
-
-export default formConfig;

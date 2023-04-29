@@ -1,2 +1,2 @@
-export { Page as default } from './index.page.component';
-export { getStaticProps } from './index.page.entry';
+export { getStaticProps } from './index.backend';
+export { Page as default } from './index.frontend';

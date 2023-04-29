@@ -1,4 +1,4 @@
-import { envConfig } from '~/config';
+import { envConfig } from '@/config';
 
 /**
  * 本番環境判定

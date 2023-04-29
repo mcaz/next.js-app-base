@@ -1,6 +1,5 @@
 export { cx as c } from '@emotion/css';
 export { Global as GlobalStyles } from '@emotion/react';
-export { theme } from '~/styles';
+export { theme } from '@/frontend/styles';
 export { createEmotionCache } from './styleLib.emotion';
-export { tryStyleIfTrue, tryStyleIfExists } from './styleLib.rendering';
-export { styles } from './styleLib.stylesheet';
+export { createStyles, style } from './styleLib.stylesheet';

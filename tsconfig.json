@@ -33,7 +33,35 @@
     "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
       /* Specify a set of entries that re-map imports to additional lookup locations. */
-      "~/*": ["src/*"],
+      "@/*": ["src/*"],
+      "@/frontend/*": ["src/env/frontend/*"],
+      "@/components/*": ["src/env/frontend/components/*"],
+      "@/controls/*": ["src/env/frontend/components/controls/*"],
+      "@/electrons/*": ["src/env/frontend/components/electrons/*"],
+      "@/forms/*": ["src/env/frontend/components/forms/*"],
+      "@/icons/*": ["src/env/frontend/components/icons/*"],
+      "@/molecules/*": ["src/env/frontend/components/molecules/*"],
+      "@/organisms/*": ["src/env/frontend/components/organisms/*"],
+      "@/pageLayouts/*": ["src/env/frontend/components/pageLayouts/*"],
+      "@/pageTemplates/*": ["src/env/frontend/components/pageTemplates/*"],
+      "@/components/providers/*": ["src/env/frontend/components/providers/*"],
+
+      "@/frontend": ["src/env/frontend"],
+      "@/components": ["src/env/frontend/components"],
+      "@/controls": ["src/env/frontend/components/controls"],
+      "@/electrons": ["src/env/frontend/components/electrons"],
+      "@/forms": ["src/env/frontend/components/forms"],
+      "@/icons": ["src/env/frontend/components/icons"],
+      "@/molecules": ["src/env/frontend/components/molecules"],
+      "@/organisms": ["src/env/frontend/components/organisms"],
+      "@/pageLayouts": ["src/env/frontend/components/pageLayouts"],
+      "@/pageTemplates": ["src/env/frontend/components/pageTemplates"],
+      "@/components/providers": ["src/env/frontend/components/providers"],
+
+      "@/hooks": ["src/env/frontend/hooks"],
+      "@/hooks/*": ["src/env/frontend/hooks/*"],
+
+      "@/backend/*": ["src/env/backend/*"],
       "types": ["src/types"]
     },
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
@@ -121,7 +149,8 @@
     "**/*.ts",
     "**/*.tsx",
     "types/**/*.ts",
-    "src/pages/index.gerServerSideProps"
+    "src/page/index.gerServerSideProps",
+    "src/env/frontend/components/atoms/Button/Button.stories.@tsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,2 +1,5 @@
-export { getServerSideProps } from './index.page.entry';
-export { Page as default } from './index.page.component';
+import { getServerSideProps } from './index.backend';
+import { Page } from './index.frontend';
+
+export default Page;
+export { getServerSideProps };

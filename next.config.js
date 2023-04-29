@@ -15,11 +15,11 @@ module.exports = withPlugins(
   ],
   {
     reactStrictMode: false,
-    esModule: false,
+    // esModule: false,
     compress: true,
     typescript: {},
     experimental: {
-      esmExternals: false,
+      // esmExternals: false,
     },
     images: {
       disableStaticImages: true,

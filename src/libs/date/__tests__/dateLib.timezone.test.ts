@@ -1,5 +1,5 @@
 import { TimeZoneDate } from '../dateLib.timezone';
-import { isDate } from '~/test/helpers';
+import { isDate } from '@/libs/test';
 
 // 協定世界時とJSTの差分は -540になる
 // const DIFFERENCES_FROM_UTC = -540;

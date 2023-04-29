@@ -1,10 +1,10 @@
-import { TSubject, TVerb } from '~/role';
-import { Acls } from '~/role/role.acls';
+import { TSubject, TVerb } from '@/roles';
+import { Acls } from '@/roles/roles.acls';
 
-export const canThunk = (acls: Acls) => {
-  const can = <T extends TSubject>(verb: TVerb<T>, subject: T) => {
+export const createCan = (acls: Acls) => {
+  const can = (verb: TVerb<TSubject>, subject: TSubject) => {
     try {
-      return acls[subject as string][verb]();
+      return acls[subject][verb]();
     } catch (e) {
       console.error(e);
       return false;

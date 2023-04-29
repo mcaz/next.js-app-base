@@ -18,3 +18,8 @@ export enum EventStatus {
   PUBLIC = 'PUBLIC',
   PRIVATE = 'PRIVATE',
 }
+
+export const Role = {
+  MASTER: 'MASTER',
+  GENERAL: 'GENERAL',
+} as const;

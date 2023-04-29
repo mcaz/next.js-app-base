@@ -1,3 +1,3 @@
-export { voToDto, vosToDtos, vosToDtosThunk } from './modelLib.converte';
+export { ct, cv } from './modelLib.class';
+export { voToDto } from './modelLib.converte';
 export { validateDto } from './modelLib.validate';
-export { cv, ct } from './modelLib.class';

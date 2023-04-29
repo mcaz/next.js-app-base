@@ -1,13 +1,11 @@
-export { createContext, memo } from 'react';
+export { createContext, memo, isValidElement } from 'react';
 export {
   childrenLength,
   childrenToArray,
   mapChildren,
 } from './reactLib.children';
-export { componentDidMount, componentWillUnmount } from './reactLib.lifecycle';
+export { combineHocs } from './reactLib.hoc';
 export {
-  tryRenderWhenMounted,
-  tryRenderIfTrue,
-  combineWithProviders,
-} from './reactLib.render';
-export { watch } from './reactLib.watch';
+  useComponentDidMount,
+  useComponentWillUnmount,
+} from './reactLib.lifecycle';

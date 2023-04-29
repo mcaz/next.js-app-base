@@ -12,5 +12,3 @@ export const apiConfig = {
     },
   },
 } as const;
-
-export default apiConfig;

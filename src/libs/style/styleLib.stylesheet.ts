@@ -1,45 +1,103 @@
-import { css } from '@emotion/css';
+import { css as createClass } from '@emotion/css';
+import { CSSInterpolation, CSSOthersObject } from '@emotion/serialize';
+
+import { theme } from '@/frontend/styles/theme';
+
+type CSSObject = { [key in string]: CSSInterpolation | CSSOthersObject };
+type StringStylesObject<T> = { [key in keyof T]: string };
 
 /**
- * スタイル生成、生成したスタイルクラスのオブジェクトを返す
- * スタイルはHTML上に追加される
- * HTMLにある追加スタイルを指定するためのクラス名をValueにしたオブジェクトを生成する
+ * CSSクラスオブジェクトを作成する
  *
- * @param o スタイルオブジェクト
- * @returns { スタイルオブジェクトのキー: 生成されたスタイルのクラス }
+ * @param o
+ * @returns
  *
  * @example
+ * import { cx, createStyles } from '@/utils/style'
  *
- * const s = styles({
- *   className1: {
- *     fontWeight: 'bold'
+ * const styles = createStyles(
+ *   className: {
+ *     color: 'black',
  *   },
- *
- *   className2: {
- *     display: 'block',
- *
- *     "&:first-child": {
- *       color: 'red'
- *     },
- *
- *     // "&"はなくてもいい
- *     ":last-child": {
- *       color: 'blue'
- *     }
+ *   classA: {
+ *     color: 'red',
+ *   },
+ *   classB: {
+ *     color: 'blue',
+ *   },
+ *   gridRoot: {
+ *     color: 'gray',
+ *   },
+ *   gridContainer: {
+ *     color: 'gray',
  *   }
- * })
+ * );
  *
- * console.log(s)
- * // => { className1: 'スタイルクラス1', className2: 'スタイルクラス2' }
+ * const Component = () => {
+ *   return (
+ *     <Box className={styles.className}>
+ *       <Grid
+ *         className={cx(
+ *           styles.classA,
+ *           styles.classB,
+ *         )}
+ *         classes={{
+ *           root: styles.gridRoot,
+ *           container: styles.gridContainer
+ *         }}
+ *       >
+ *         xxx
+ *       </Grid>
+ *     </Box>
+ *   )
+ * }
  */
-export const styles = <T = TCSSStylesObject, P = TCSSClassNamesObject<keyof T>>(
-  o: T
-): P => {
-  return Object.entries(o).reduce(
+export const createStyles = <T extends CSSObject, U = StringStylesObject<T>>(
+  o: T | ((ctx: { theme: typeof theme }) => T)
+): U => {
+  return Object.entries(o instanceof Function ? o({ theme }) : o).reduce(
     (_, [name, styles]) => ({
       ..._,
-      [name]: css(styles),
+      [name]: createClass(styles, { label: '--' + name }),
     }),
     {}
-  ) as P;
+  ) as U;
 };
+
+/**
+ * スタイル設定用オブジェクトを返す
+ *
+ * @param c   className
+ * @param con condition
+ * @returns   object
+ *
+ * @example
+ * import { style, cx } from '@/utils/style'
+ *
+ * const styles = createStyles(
+ *   classA: {
+ *     color: 'red'
+ *   },
+ *   classB: {
+ *     color: 'blue'
+ *   },
+ * );
+ *
+ * const Component = () => {
+ *   return (
+ *     <Box
+ *       className={cx(
+ *         style(styles.classA, true) // trueのものだけがスタイル反映される
+ *         style(styles.classB, false)
+ *       )}
+ *     >
+ *       xxx
+ *     </Box>
+ *   )
+ * }
+ */
+export const style = (c: string, con: unknown) => {
+  return { [c]: Boolean(con) };
+};
+
+export { cx } from '@emotion/css';

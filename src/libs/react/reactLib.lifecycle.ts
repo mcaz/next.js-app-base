@@ -1,24 +1,94 @@
-import { useEffect, useRef } from 'react';
-import { useEffectOnce } from 'react-use';
+import { useEffect, useRef, useState } from 'react';
 
 /**
- * コンポーネントマウント後にコールバックを実行する
+ * Like React.Component.prototype.componentDidMount.
  *
- * @param cb VoidFunction
+ * @param callback
+ *
+ * @example
+ * const { mounted } = useComponentDidMount(() => {
+ *   console.log('useComponentDidMount);
+ * });
  */
-export const componentDidMount = (cb: VoidFunction) => {
-  useEffectOnce(cb);
+export const useComponentDidMount = (callback: VoidFunction) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    if (mounted) {
+      return;
+    }
+
+    setMounted(true);
+    callback();
+  }, [callback, mounted, setMounted]);
+
+  return {
+    mounted,
+    setMounted,
+  };
 };
 
 /**
- * コンポーネントマウント時にコールバックを実行する
+ * Like React.Component.prototype.componentWillUnmount.
  *
- * @param cb VoidFunction
+ * @param callback
+ *
+ * @example
+ * useComponentWillUnmount(() => {
+ *   console.log('useComponentWillUnmount);
+ * });
  */
-export const componentWillUnmount = (cb: VoidFunction) => {
-  const ref = useRef(cb);
-
-  ref.current = cb;
+export const useComponentWillUnmount = (callback: VoidFunction) => {
+  const ref = useRef(callback);
 
   useEffect(() => () => ref.current(), []);
+};
+
+/**
+ * Lifecycle
+ *
+ * @param callbacks
+ * @prop  componentDidMount
+ * @prop  componentWillUnmount
+ *
+ * @example
+ * const { mounted } = useLifecycle({
+ *   componentDidMount() {
+ *     console.log('componentDidMount');
+ *   },
+ *   componentWillUnmount() {
+ *     console.log('componentWillUnmount');
+ *   },
+ * });
+ *
+ * @example
+ * 非同期処理
+ * useLifecycle({
+ *   async componentDidMount() {
+ *     const response = await getRequest('/xxx/xxx');
+ *     console.log('componentDidMount', response);
+ *   },
+ * });
+ *
+ * @example
+ * const { mounted } = useLifecycle();
+ */
+export const useLifecycle = (callbacks?: {
+  componentDidMount?: VoidFunction;
+  componentWillUnmount?: VoidFunction;
+}) => {
+  const { componentDidMount, componentWillUnmount } = callbacks || {};
+
+  const { mounted, setMounted } = useComponentDidMount(() => {
+    componentDidMount && componentDidMount();
+  });
+
+  useComponentWillUnmount(() => {
+    setMounted(false);
+    componentWillUnmount && componentWillUnmount();
+  });
+
+  return {
+    mounted,
+  };
 };

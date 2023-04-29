@@ -63,5 +63,3 @@ export const pageConfig: TPages = {
     },
   },
 } as const;
-
-export default pageConfig;

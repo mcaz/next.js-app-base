@@ -1,9 +1,9 @@
-import apiConfig from './apiConfig';
-import authConfig from './authConfig';
-import envConfig from './envConfig';
-import formConfig from './formConfig';
-import pageConfig from './pageConfig';
-import storeConfig from './storeConfig';
+import { apiConfig } from './apiConfig';
+import { authConfig } from './authConfig';
+import { envConfig } from './envConfig';
+import { formConfig } from './formConfig';
+import { pageConfig } from './pageConfig';
+import { storeConfig } from './storeConfig';
 
 export { apiConfig } from './apiConfig';
 export { authConfig } from './authConfig';
@@ -20,5 +20,3 @@ export const config = {
   store: storeConfig,
   form: formConfig,
 } as const;
-
-export default config;

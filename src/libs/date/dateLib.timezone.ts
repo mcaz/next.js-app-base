@@ -1,4 +1,4 @@
-import { envConfig } from '~/config';
+import { envConfig } from '@/config';
 
 /**
  * フロント共通のタイムゾーンに設定したDateインスタンスを返す

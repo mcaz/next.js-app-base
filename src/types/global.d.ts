@@ -1,11 +1,28 @@
 import { CSSInterpolation } from '@emotion/serialize';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { NextComponentType, NextPageContext } from 'next';
+import { AxiosError, AxiosResponse } from 'axios';
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  GetServerSidePropsResult,
+  GetStaticProps,
+  GetStaticPropsResult,
+  NextComponentType,
+  NextPageContext,
+} from 'next';
 import { AppContext } from 'next/app';
+import { LinkProps } from 'next/link';
 import { Router } from 'next/router';
-import React, { ComponentProps } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
+import {
+  ComponentProps,
+  DependencyList,
+  EffectCallback,
+  ElementType,
+  FC,
+  ReactNode,
+} from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { Next } from 'types';
 
 import { RoleType } from './tableValue';
 
@@ -13,42 +30,55 @@ declare global {
   /**
    * ================================================================
    *
-   * Utitilies
+   * Utilities
    *
    * ================================================================
    */
 
   type TOptional<T> = T | undefined;
   type TNullable<T> = T | null;
-  type TStringable<T> = T | string;
+  type TStainable<T> = T | string;
   type TNumerable<T> = T | number;
   type TNumberOrString = string | number;
   type TRouter = Router;
+  type TUrlObject = LinkProps['href'];
 
   /**
    * ================================================================
    *
-   * Object Utitilies
+   * Object Utilities
    *
    * ================================================================
    */
 
-  type TObject<T, K = string> = { [key in K]: T };
+  type TObject<T, K = string | number | symbol> = { [key in K]: T };
 
   /**
    * ================================================================
    *
-   * Class Utitilies
+   * Class Utilities
    *
    * ================================================================
    */
 
   type TClassConstructor<T> = { new (...args: any[]): T };
+  type TDependencyList = DependencyList;
 
   /**
    * ================================================================
    *
-   * Style Utitilies
+   * Function Utilities
+   *
+   * ================================================================
+   */
+
+  type TPromiseResult<T> = T extends Promise<infer U> ? U : never;
+  type TAsyncReturnType<T> = TPromiseResult<ReturnType<T>>;
+
+  /**
+   * ================================================================
+   *
+   * Style Utilities
    *
    * ================================================================
    */
@@ -78,11 +108,11 @@ declare global {
    * ================================================================
    */
 
-  type TNode = React.ReactNode;
+  type TNode = ReactNode;
   type TNodeObject<T> = { [K in T]: TNode };
   type TChildren = TNode;
   type TElement = JSX.Element;
-  type TWithProvider = (Component: TElement, ctx?: unknown) => TElement;
+  type THoc = (Component: TElement, ctx?: unknown) => TElement;
 
   /**
    * ================================================================
@@ -92,8 +122,11 @@ declare global {
    * ================================================================
    */
 
-  type TVFC<T = unknown> = React.VFC<T>;
+  // type TFC<T = unknown> = VFC<T>;
+  type TFC<T = unknown> = FC<T>;
   type TComponentProps<T> = ComponentProps<T>;
+  type TEffectCallback = EffectCallback;
+  type TDependencyList = DependencyList;
 
   /**
    * ================================================================
@@ -104,7 +137,38 @@ declare global {
    */
 
   type TIntrinsicElements = JSX.IntrinsicElements;
-  type TIntrinsicElementType<T> = React.ElementType<JSX.IntrinsicElements[T]>;
+  type TIntrinsicElementType<T> = ElementType<JSX.IntrinsicElements[T]>;
+
+  /**
+   * ================================================================
+   *
+   * Api Utilities
+   *
+   * ================================================================
+   */
+
+  type TApiResponse<T, D = any> = AxiosResponse<T, D>;
+  type TApiError<T, D = any> = AxiosError<T, D>;
+
+  /**
+   * ================================================================
+   *
+   * Object Utilities
+   *
+   * ================================================================
+   */
+
+  /**
+   * ================================================================
+   *
+   * State Utilities
+   *
+   * ================================================================
+   */
+
+  type TDispatchState<T> = Dispatch<T>;
+  type TSetStateAction<T> = SetStateAction<T>;
+  type TDispatchStateAction<T> = Dispatch<SetStateAction<T>>;
 
   /**
    * ================================================================
@@ -137,12 +201,12 @@ declare global {
   /**
    * RadioButton Option
    */
-  type TRadioOption<T = TNumberOrString> = SelectOption<T>;
+  type TRadioOption<T = TNumberOrString> = TSelectOption<T>;
 
   /**
    * Checkbox Option
    */
-  type TCheckboxOption<T = TNumberOrString> = SelectOption<T>;
+  type TCheckboxOption<T = TNumberOrString> = TSelectOption<T>;
 
   /**
    * ================================================================
@@ -189,13 +253,40 @@ declare global {
     /**
      * next.js GetServerSideProps
      */
-    type TProps = Next.GetServerSideProps;
+    type TProps = GetServerSideProps;
+
+    /**
+     * next.js GetServerSidePropsContext
+     */
+    type TContext = GetServerSidePropsContext;
+
+    /**
+     * next.js GetServerSidePropsContext & query
+     */
+    type TContextWithQuery<T> = Omit<TContext, 'query'> & {
+      query: T;
+    };
+
+    /**
+     * next.js GetServerSidePropsContext & params
+     */
+    type TContextWithParam<T> = Omit<TContext, 'param'> & {
+      param: T;
+    };
+
+    /**
+     * next.js GetServerSidePropsContext & query & param
+     */
+    type TContextWithQueryAndParam<Q, P> = Omit<TContext, 'query', 'param'> & {
+      query: Q;
+      param: P;
+    };
 
     /**
      * next.js GetServerSidePropsResult & Additional Result
      */
     type TResult<T = undefined> = Promise<
-      Next.GetServerSidePropsResult<TServerSideAdditionalResult<T>>
+      GetServerSidePropsResult<TServerSideAdditionalResult<T>>
     >;
   }
 
@@ -208,13 +299,13 @@ declare global {
     /**
      * next.js GetStaticProps
      */
-    type TProps = Next.GetStaticProps;
+    type TProps = GetStaticProps;
 
     /**
      * next.js GetStaticPropsResult & Additional Result
      */
     type TResult<T = undefined> = Promise<
-      Next.GetStaticPropsResult<TServerSideAdditionalResult<T>>
+      GetStaticPropsResult<TServerSideAdditionalResult<T>>
     >;
   }
 
@@ -227,18 +318,40 @@ declare global {
    */
 
   /**
+   * TPageCommon Props
+   */
+  type TPageBaseProps<T> = TServerSideAdditionalResult<T> & {
+    pages: TPages;
+    router: Router;
+  };
+
+  /**
    * PageComponent Props
    */
-  type TPageProps<T = undefined> = TVFC<
-    TServerSideAdditionalResult<T> & { pages: TPages; router: Router }
+  type TPageProps<T = undefined> = TFC<TPageBaseProps<T>>;
+
+  /**
+   * PageLayout Props
+   */
+  type TPageLayout<T = undefined> = TFC<
+    TPageBaseProps<T> & {
+      children: TChildren;
+    }
   >;
 
   /**
-   * _app.ts Props
+   * PageComponent
+   */
+  type TPageComponent<T> = NextComponentType<NextPageContext, unknown, T> & {
+    Layout?: TPageProps['Layout'];
+  };
+
+  /**
+   * AppProps
    */
   type TAppProps<T = { page: TPage }> = AppContext & {
     pageProps: T;
-    Component: NextComponentType<NextPageContext, unknown, T>;
+    Component: TPageComponent<T>;
   };
 
   /**

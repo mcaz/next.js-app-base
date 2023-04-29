@@ -3,8 +3,7 @@ export const storeConfig = {
     root: 'store',
     app: 'app',
     user: 'user',
+    withSidebarLayout: 'withSidebarLayout',
   },
   debounceInterval: 500,
 } as const;
-
-export default storeConfig;
