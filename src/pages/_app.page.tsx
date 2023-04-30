@@ -1,15 +1,5 @@
 import { default as Head } from 'next/head';
 
-import {
-  withCache,
-  withMessageModal,
-  withProgress,
-  withRouter,
-  withSnackbar,
-  withState,
-  withStore,
-  withTheme,
-} from '@/components/providers';
 import { C } from '@/controls';
 import { E } from '@/electrons';
 import {
@@ -20,6 +10,17 @@ import {
   useRouter,
 } from '@/hooks/app';
 import { useHoc, useLifecycle } from '@/hooks/react';
+
+import {
+  withCache,
+  withMessageModal,
+  withProgress,
+  withRouter,
+  withSnackbar,
+  withState,
+  withStore,
+  withTheme,
+} from '@/providers';
 
 import './_app.foundation.import';
 

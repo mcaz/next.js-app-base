@@ -224,7 +224,7 @@ declare global {
   /**
    * Page Data
    */
-  type TPage = { path: string; meta: TPageMeta };
+  type TPage = { path: string; meta: TPageMeta; public: boolean };
 
   /**
    * Pages

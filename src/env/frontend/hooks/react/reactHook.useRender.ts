@@ -1,3 +1,4 @@
+import { default as nookies, destroyCookie } from 'nookies';
 import { useCallback, useMemo } from 'react';
 
 import { request } from '@/libs/api';
@@ -41,5 +42,7 @@ export const useRender = () => {
     createStyles,
     style,
     request,
+    nookies,
+    destroyCookie,
   };
 };

@@ -1,5 +1,6 @@
-import { TUseheader } from './Header.types';
 import { pageConfig } from '@/config';
+
+import { TUseheader } from './Header.types';
 
 export const useHeader = ({
   title,

@@ -2,8 +2,6 @@ import { C } from '@/controls';
 import { E } from '@/electrons';
 import { useInfo } from '@/hooks/pageLayout';
 import { useMemo, useRender } from '@/hooks/react';
-import { useRouter } from '@/hooks/router';
-import { M } from '@/molecules';
 
 import { LAYOUT_NAME } from './OneColumnLayout.const';
 import { s } from './OneColumnLayout.styles';
@@ -14,12 +12,9 @@ export const OneColumnLayout: TFC<TProps> = ({
   components: { Header, Footer },
   classes,
 }) => {
-  useInfo({
-    name: LAYOUT_NAME,
-  });
+  useInfo({ name: LAYOUT_NAME });
 
   const { c, style } = useRender();
-  const { pages } = useRouter();
 
   const existsHeader = useMemo(() => Boolean(Header), [Header]);
   const existsFooter = useMemo(() => Boolean(Footer), [Footer]);
@@ -47,11 +42,6 @@ export const OneColumnLayout: TFC<TProps> = ({
           className={c(s.MainContainer__Inner, classes?.MainContainer__Inner)}
         >
           <E.Container component={E.Division} className={s.Container}>
-            <M.LinkButtonList
-              items={Object.entries(pages).map(([, { path, meta }]) => {
-                return { path, label: meta.title };
-              })}
-            />
             {children}
           </E.Container>
         </E.Division>

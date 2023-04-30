@@ -20,9 +20,7 @@ export class GetStrategy extends RequestStrategy {
    * @returns
    */
   async request<T>({ client, url, params }: RestClient) {
-    const foo = await client.get<T>(url, { params: params.value });
-
-    return foo;
+    return client.get<T>(url, { params: params.value });
   }
 }
 
@@ -46,15 +44,11 @@ export class PostStrategy extends PutStrategy {
    *
    * @prop {RestClient} client
    * @prop {string}     url
-   * @prop {object}     data
+   * @prop {Params}     params
    * @returns
    */
-  async requestData<T>({ client, url, data }: RestClient & { data: FormData }) {
-    return client.post<T>(url, data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+  async request<T>({ client, url, params }: RestClient) {
+    return client.post<T>(url, params.value);
   }
 }
 

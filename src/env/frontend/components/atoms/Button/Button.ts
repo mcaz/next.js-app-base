@@ -1,1 +1,1 @@
-export * from '@/components/atoms/__shared__/Button';
+export * from '@/atoms/__shared__/Button';

@@ -1,8 +1,8 @@
 import { O } from '@/organisms';
 import { L } from '@/pageLayouts';
+import { T } from '@/pageTemplates';
 
 import { TResource } from './index.types';
-import { T } from '@/pageTemplates';
 
 /**
  * Frontend

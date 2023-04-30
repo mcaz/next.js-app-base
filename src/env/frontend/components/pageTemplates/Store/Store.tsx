@@ -1,13 +1,13 @@
-import { A } from '@/components/atoms';
-import { F } from '@/components/forms';
+import { A } from '@/atoms';
 import { C } from '@/controls';
 import { E } from '@/electrons';
-
-import { TEMPLATE_NAME } from './Store.const';
-import { s } from './Store.styles';
+import { F } from '@/forms';
 import { useForm } from '@/hooks/form';
 import { useInfo } from '@/hooks/pageTemplate';
 import { useStore } from '@/hooks/store';
+
+import { TEMPLATE_NAME } from './Store.const';
+import { s } from './Store.styles';
 
 export const PageTemplate: TPageProps = ({ router }) => {
   useInfo({ name: TEMPLATE_NAME, router });

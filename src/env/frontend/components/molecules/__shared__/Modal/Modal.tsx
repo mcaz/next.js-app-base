@@ -1,9 +1,10 @@
 import { default as ModalBase } from '@mui/material/Modal';
 
+import { Button } from '@/atoms/__shared__';
+import { E } from '@/electrons';
+
 import { s } from './Modal.styles';
 import { TProps } from './Modal.types';
-import { Button } from '@/components/atoms/__shared__';
-import { E } from '@/electrons';
 
 export const Modal: TFC<TProps> = ({ children, open, closeModal }) => {
   return (

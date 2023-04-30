@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { default as axios, AxiosInstance } from 'axios';
 
 import { apiConfig } from '@/config';
 import { isBrowser } from '@/libs/env';
@@ -15,17 +15,7 @@ import {
 import { IAuthUser, IParam, TRequestResponse } from './apiLib.RestClient.types';
 
 export class RestClient {
-  readonly client = axios.create({
-    // 実行環境に合わせてエンドポイントを変更する
-    baseURL: isBrowser()
-      ? apiConfig.publicNetwork.endpointBase
-      : apiConfig.localNetwork.endpointBase,
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-    },
-    responseType: 'json',
-  });
+  readonly client: AxiosInstance;
 
   /**
    * エンドポイントベース
@@ -33,7 +23,7 @@ export class RestClient {
    * @readonly
    * @type {string}
    * */
-  readonly endpointBase: string = '';
+  readonly endpoint: string = '';
 
   /**
    * パラメータ
@@ -53,10 +43,25 @@ export class RestClient {
 
   /**
    * @constructor
+   * @param endpoint
    * @param endpointBase
    */
-  constructor(endpointBase: string) {
-    this.endpointBase = endpointBase;
+  constructor(endpoint: string, endpointBase?: string) {
+    this.endpoint = endpoint;
+
+    this.client = axios.create({
+      // 実行環境に合わせてエンドポイントを変更する
+      baseURL: endpointBase
+        ? endpointBase
+        : isBrowser()
+        ? apiConfig.publicNetwork.endpointBase
+        : apiConfig.localNetwork.endpointBase,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+      responseType: 'json',
+    });
   }
 
   /**
@@ -64,7 +69,7 @@ export class RestClient {
    * @type {string}
    */
   get url() {
-    return template(this.endpointBase, this.queries.value);
+    return template(this.endpoint, this.queries.value);
   }
 
   /**
@@ -130,9 +135,7 @@ export class RestClient {
    * @returns {Promise<TRequestResponse<T>>}
    */
   async get<T>(): Promise<TRequestResponse<T>> {
-    const res = await this.request<T>(new GetStrategy());
-
-    return res;
+    return this.request<T>(new GetStrategy());
   }
 
   /**
@@ -169,9 +172,10 @@ export class RestClient {
 /**
  * クライアント作成
  *
+ * @param endpoint
  * @param endpointBase
  * @returns
  */
-export const createRestClient = (endpointBase: string) => {
-  return new RestClient(endpointBase);
+export const createRestClient = (endpoint: string, endpointBase?: string) => {
+  return new RestClient(endpoint, endpointBase);
 };

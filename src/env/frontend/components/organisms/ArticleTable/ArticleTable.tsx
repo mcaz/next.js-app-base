@@ -1,6 +1,6 @@
-import { A } from '@/components/atoms';
-import { F } from '@/components/forms';
+import { A } from '@/atoms';
 import { E } from '@/electrons';
+import { F } from '@/forms';
 import { useForm } from '@/hooks/form';
 import { useRender } from '@/hooks/react';
 import { M } from '@/molecules';

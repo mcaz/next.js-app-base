@@ -1,9 +1,15 @@
+import { withAuthSSR } from '@/backend/withAuthSSR';
 import { pageConfig } from '@/config/pageConfig';
 
-export const getServerSideProps: NSSR.TProps = async (): NSSR.TResult => {
-  return {
-    props: {
-      page: pageConfig.components,
-    },
-  };
+/**
+ * Backend
+ */
+export const getServerSideProps: NSSR.TProps = async (ctx): NSSR.TResult => {
+  return withAuthSSR(ctx, pageConfig.components, async () => {
+    return {
+      props: {
+        page: pageConfig.components,
+      },
+    };
+  });
 };

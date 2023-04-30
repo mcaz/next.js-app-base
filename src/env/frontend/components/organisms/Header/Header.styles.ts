@@ -1,13 +1,11 @@
 import { createStyles, theme } from '@/libs/style';
 
 export const s = createStyles({
-  // .Header
   Header: {
     background: theme.palette.primary.main,
   },
 
-  // .Inner
-  Inner: {
+  Header__Inner: {
     display: 'table',
     tableLayout: 'fixed',
     width: '100%',
@@ -16,20 +14,21 @@ export const s = createStyles({
     fontWeight: 'bold',
   },
 
-  // .Cell
-  Cell: {
+  Header__Cell: {
     display: 'table-cell',
     padding: '1rem 2.4rem',
     verticalAlign: 'middle',
   },
 
-  // .Cell--title
-  Cell_title: {
+  Header__Cell_title: {
     textAlign: 'left',
   },
 
-  // .Cell--user
-  Cell_user: {
+  Header__Cell_user: {
     textAlign: 'right',
+  },
+
+  Header__LogoutIcon: {
+    color: theme.palette.common.white,
   },
 });

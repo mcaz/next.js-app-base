@@ -1,8 +1,9 @@
-import { s } from './LinkButtonList.styles';
-import { TProps } from './LinkButtonList.types';
-import { A } from '@/components/atoms';
+import { A } from '@/atoms';
 import { E } from '@/electrons';
 import { useRender } from '@/hooks/react';
+
+import { s } from './LinkButtonList.styles';
+import { TProps } from './LinkButtonList.types';
 
 export const LinkButtonList: TFC<TProps> = ({ items }) => {
   const { key } = useRender();

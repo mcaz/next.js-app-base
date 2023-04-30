@@ -43,6 +43,7 @@
     "date-fns": "^2.29.3",
     "destyle.css": "^4.0.0",
     "emotion": "^11.0.0",
+    "firebase": "^9.21.0",
     "glob-parent": "^6.0.2",
     "nanoid": "^4.0.2",
     "next": "^13.3.0",
