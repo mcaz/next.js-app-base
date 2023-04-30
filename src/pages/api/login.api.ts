@@ -36,37 +36,20 @@ export const login = async (email: string, password: string) => {
 export const handler: NextApiHandler = async (req, res) => {
   const { email, password } = req.body;
 
-  console.log('handler1');
-
   const response = await login(email, password);
 
-  console.log('handler2');
-
   if (!response.ok) {
-    console.log('handler3');
-
     res
       .status(response.status)
       .json({ error: { message: response.statusText } });
 
-    console.log('handler4');
-
     throw new Error(response.statusText);
   }
 
-  console.log('handler5');
-
   const { idToken } = await response.json();
 
-  console.log('handler6');
-
   assignSession(res, idToken);
-
-  console.log('handler7');
-
   res.status(response.status).json({});
-
-  console.log('handler8');
 };
 
 export default handler;
