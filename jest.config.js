@@ -19,4 +19,5 @@ module.exports = {
     '<rootDir>/node_modules/',
     '<rootDir>/cypress/',
   ],
+  testEnvironment: 'jest-environment-jsdom',
 };
