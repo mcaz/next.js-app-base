@@ -80,6 +80,9 @@
       "@/hooks": ["src/env/frontend/hooks"],
       "@/hooks/*": ["src/env/frontend/hooks/*"],
 
+      "@/libs": ["src/libs"],
+      "@/libs/*": ["src/libs/*"],
+
       "@/backend": ["src/env/backend"],
       "@/backend/*": ["src/env/backend/*"],
 
