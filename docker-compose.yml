@@ -6,10 +6,10 @@ volumes:
 services:
   node:
     build:
-      context: .
-      dockerfile: ./docker/Dockerfile
+      context: ./docker
+      dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - '3001:3000'
     tty: true
     environment:
       NODE_ENV: development
@@ -17,4 +17,4 @@ services:
     volumes:
       - ./:/app:cached
       - frontend_volume_node_modules:/app/node_modules
-    command: npm run dev
+    command: yarn dev

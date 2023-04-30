@@ -1,9 +1,9 @@
 import { Fragment, FC } from 'react';
 
+import { useRender } from '@/hooks/react';
 import { FilledArray } from '@/libs/array';
 
 import { Props } from './LoopTypes';
-import { useRender } from '@/hooks/react';
 
 export const Loop: FC<Props> = ({ children, count }) => {
   const { key } = useRender();

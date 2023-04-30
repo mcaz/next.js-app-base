@@ -1,8 +1,9 @@
-import { s } from './ListTable.styles';
-import { TProps } from './ListTable.types';
 import { C } from '@/controls';
 import { E } from '@/electrons';
 import { useRender } from '@/hooks/react';
+
+import { s } from './ListTable.styles';
+import { TProps } from './ListTable.types';
 
 export const ListTable = <T,>(props: TProps<T>) => {
   const { panel, rows, cols, classes, className } = props;

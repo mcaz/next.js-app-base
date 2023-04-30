@@ -1,7 +1,8 @@
 import { ComponentType, ElementType } from 'react';
 
-import { Props } from './Repeater.types';
 import { useRender } from '@/hooks/react';
+
+import { Props } from './Repeater.types';
 
 export const Repeater = <T extends ComponentType<any> | ElementType>({
   component,

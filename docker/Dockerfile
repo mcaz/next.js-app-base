@@ -17,7 +17,7 @@ RUN yarn install
 
 
 COPY . .
-RUN npm run build
+RUN yarn build
 
 USER node
-CMD ["npm", "run", "start"]
+CMD ["yarn", "dev"]

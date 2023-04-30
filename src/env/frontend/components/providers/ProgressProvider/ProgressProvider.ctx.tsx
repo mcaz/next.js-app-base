@@ -1,5 +1,6 @@
-import { TContext } from './ProgressProvider.types';
 import { createContext } from '@/libs/react';
+
+import { TContext } from './ProgressProvider.types';
 
 export const Context = createContext<TContext>({
   startProgress: null,

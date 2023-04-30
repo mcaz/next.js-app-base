@@ -1,6 +1,7 @@
-import { INITIAL_STATE } from './userStore.const';
 import { storeConfig } from '@/config';
 import { createSlice } from '@/libs/store';
+
+import { INITIAL_STATE } from './userStore.const';
 
 export const {
   reducer,

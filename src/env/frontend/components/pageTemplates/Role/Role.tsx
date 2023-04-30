@@ -1,10 +1,10 @@
 import { C } from '@/controls';
 import { E } from '@/electrons';
+import { useInfo } from '@/hooks/pageTemplate';
+import { useRole } from '@/hooks/role';
 
 import { TEMPLATE_NAME } from './Role.const';
 import { s } from './Role.styles';
-import { useInfo } from '@/hooks/pageTemplate';
-import { useRole } from '@/hooks/role';
 
 export const PageTemplate: TPageProps = ({ router }) => {
   useInfo({ name: TEMPLATE_NAME, router });

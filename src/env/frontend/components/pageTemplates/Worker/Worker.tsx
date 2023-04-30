@@ -1,11 +1,11 @@
 import { C } from '@/controls';
 import { E } from '@/electrons';
-
-import { TEMPLATE_NAME } from './Worker.const';
-import { s } from './Worker.styles';
 import { useInfo } from '@/hooks/pageTemplate';
 import { useLifecycle, useMemo, useState } from '@/hooks/react';
 import { useWorker, useWorkerWithState } from '@/hooks/worker';
+
+import { TEMPLATE_NAME } from './Worker.const';
+import { s } from './Worker.styles';
 
 export const PageTemplate: TPageProps = ({ router }) => {
   useInfo({ name: TEMPLATE_NAME, router });

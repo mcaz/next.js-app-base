@@ -10,7 +10,6 @@ import {
   useRouter,
 } from '@/hooks/app';
 import { useHoc, useLifecycle } from '@/hooks/react';
-
 import {
   withCache,
   withMessageModal,

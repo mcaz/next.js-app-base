@@ -1,6 +1,7 @@
-import { a, namespace } from './userStore.slice';
 import type { TRootState as T } from '@/data/stores/store';
 import { useDispatch, useSelector as s } from '@/hooks/store';
+
+import { a, namespace } from './userStore.slice';
 
 /**
  * userStoreフック

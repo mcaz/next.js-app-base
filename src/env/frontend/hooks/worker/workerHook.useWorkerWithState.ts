@@ -1,5 +1,6 @@
-import { TProps } from './workerHook.useWorkerWithState.types';
 import { useState } from '@/hooks/react';
+
+import { TProps } from './workerHook.useWorkerWithState.types';
 
 /**
  * @hook

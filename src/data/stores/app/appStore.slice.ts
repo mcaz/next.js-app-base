@@ -1,6 +1,7 @@
-import { INITIAL_STATE } from './appStore.const';
 import { storeConfig } from '@/config';
 import { createSlice } from '@/libs/store';
+
+import { INITIAL_STATE } from './appStore.const';
 
 export const {
   reducer,

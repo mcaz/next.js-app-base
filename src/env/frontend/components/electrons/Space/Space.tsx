@@ -1,6 +1,7 @@
+import { useRender } from '@/hooks/react';
+
 import { TProps } from './Space.types';
 import { C } from '../../controls';
-import { useRender } from '@/hooks/react';
 
 export const Space: TFC<TProps> = ({ type = 'nbsp', len = 1 }) => {
   const length = Number(len);

@@ -4,49 +4,90 @@
 - [Command](./docs/command.md)
 - [CssStyle](./docs/cssStyle.md)
 
-## 内容
-### 当ポートフォリオ新規製作時(一人)の工数目安
-約1ヶ月半
+## 想定
+- 新規ウェブアプリ作成時のフロントエンド基礎部分として作成
+- アプリ規模想定はエンドポイント50(中規模)から数百(大規模)アプリを想定
 
-### フレームワーク
-- Next.js（SSR）
-- React（FunctionComponent）
-### ホスティング
-Vercel / Github
-### CI
+## 当ポートフォリオ新規製作時(一人)の工数目安
+- 約1ヶ月半
+
+## フレームワーク
+- Next.js 13
+- React 18
+
+## 対応可能Rendering方法
+- SSR
+- SSG
+- CSR
+
+## ホスティング
+- Github
+- Vercel
+
+## CI
 - GithubAction
-### スタイル管理・CSS設計
-- Material-ui
+- Husky
+
+## 認証
+- Firebase
+  - Authentication(Email/Password)
+
+## スタイル管理・CSS設計
+- Mui
 - emotion
-- BEMをベースにReact用にアレンジしたもの
-### コンポーネント設計
-- Container-Presenter
-- Atomic-Designをベースにアレンジしたもの
+- BEM
+- SCSS
+
+## コンポーネント設計
+- Container Presenterパターン
+- Atomic-Designアレンジ
   - components
-    - controls     : 制御コンポーネント
-    - elements     : タグとして最小のコンポーネント
-    - atoms        : 部品として最小のコンポーネント
-    - icons        : atomsとイコール
-    - molecules    : ドメインに縛られない共通コンポーネント
-    - forms        : moleculesとイコール
-    - organisms    : ドメインが決まっている共通コンポーネント
-    - pageTemplates: ページテンプレート
-    - pageLayouts  : ページレイアウト
-    - providers    : プロバイダコンポーネント
-### Store
+    - controls
+    - electrons
+    - atoms
+    - icons
+    - molecules
+    - forms
+    - organisms
+    - pageTemplates
+    - pageLayouts
+    - providers
+
+## Store
 - Redux-toolkit(アクセスにはDAOを利用)
-### 権限管理
+- LocalStorage
+- Context
+
+## 権限管理
 - ACL
-### ポーリング管理
-- Webworker
-### フォーム管理
+
+## ポーリング管理
+- WebWorker
+
+## フォーム管理・バリデーション
 - React-hook-form
-### API
-- Axios(APIクライアントベースとして利用)
-- Model管理
+- Yup
+- Mui
+
+## API
+- Rest
+- Axios(Clientのベースとして使用)
 - JsonPlaceholder(Mock)
-### テスト
+
+## テスト
 - Jest
-### Dto管理・データ検証
+
+## Dto管理・データ検証
 - class-transformer
 - class-validator
+
+## コード整形
+- Eslint
+- Prettier
+
+## プロジェクト共通ツール
+- VS-Code
+  - vscode-eslint
+  - prettier-vscode
+- docker
+- docker-compose

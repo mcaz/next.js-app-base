@@ -1,6 +1,7 @@
+import { useRender } from '@/hooks/react';
+
 import { TProps } from './Break.types';
 import { C } from '../../controls';
-import { useRender } from '@/hooks/react';
 
 export const Break: TFC<TProps> = ({ hide = false, len = 1, ...props }) => {
   const { key } = useRender();

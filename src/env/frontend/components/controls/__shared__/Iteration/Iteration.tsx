@@ -1,5 +1,6 @@
-import { TProps } from './Iteration.types';
 import { useRender } from '@/hooks/react';
+
+import { TProps } from './Iteration.types';
 
 export const Iteration: TFC<TProps> = ({
   children,
