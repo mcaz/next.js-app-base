@@ -1,3 +1,3 @@
-import { default as Button } from './Button';
-
-export default { Button };
+export * from './Button';
+export * from './IconButton';
+export { default as Collapse } from '@mui/material/Collapse';

@@ -1,20 +1,27 @@
 # Command
 
-## Install
+### 前提
+- OS: Mac
+- Package Manager: homebrew
+- Editor: vscode
+- Command File: ./Makefile
+
+___
+
+### vscode共通エクステンションインストール
 ```
-$ npm install
+$ make install_extensions
 ```
 
-## 開発
-
+### Unit Test
 ```
-# ローカルホストをwatchモードで起動
-# http://localhost:3000/
-$ docker-compose up
 ```
 
-## 環境変数 (.env)
-```
-# エンドポイントURL
 
+###
+```
+```
+
+### Unit Test
+```
 ```
