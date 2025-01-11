@@ -1,1 +1,1 @@
-export { Button, Button as default } from '~/components/atoms/__bases__';
+export { default as Button } from '@mui/material/Button';

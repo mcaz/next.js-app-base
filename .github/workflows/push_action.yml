@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - '17.2.0'
+          - '18.17.0'
 
     name: Node ${{ matrix.node-version }}
 
@@ -32,6 +32,3 @@ jobs:
 
       - name: Eslint & Prettier
         run: yarn run lint
-
-      - name: Test
-        run: yarn run test

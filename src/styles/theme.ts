@@ -1,42 +1,71 @@
-import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+import { Roboto } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
+import type {} from '@mui/x-data-grid/themeAugmentation';
+
+export const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#27AE60',
+      main: '#101418',
     },
     secondary: {
-      main: '#2F80ED',
+      main: '#19857b',
     },
+    divider: '#E5EAF2',
     error: {
-      main: '#EA3D2F',
-    },
-    background: {
-      default: '#FFF',
+      main: red.A400,
     },
   },
   components: {
-    MuiOutlinedInput: {
+    MuiCssBaseline: {},
+    MuiButton: {
       styleOverrides: {
         root: {
-          background: '#F7F9FA',
-
-          [`& .${outlinedInputClasses.notchedOutline}`]: {
-            border: '0.1rem solid #F7F9FA',
-            borderRadius: '0.4rem',
-          },
-        },
-        input: {
-          minHeight: '40px',
-          padding: '0 1.4rem',
-          fontSize: '1.4rem',
-          textAlign: 'left',
-          color: '#828282',
-          background: '#F7F9FA',
+          height: 'fit-content',
         },
       },
     },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          minWidth: '10rem',
+        },
+      },
+    },
+    MuiDataGrid: {
+      styleOverrides: {
+        overlayWrapper: {
+          height: '10rem',
+        },
+      },
+    },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          '&.custom-select-label': {
+            left: '-14px',
+          },
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          '&.custom-select-helperText': {
+            marginLeft: 0,
+          },
+        },
+      },
+    },
+  },
+  typography: {
+    fontFamily: roboto.style.fontFamily,
   },
 });
 

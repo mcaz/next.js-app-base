@@ -12,11 +12,12 @@ module.exports = {
   // },
   moduleNameMapper: {
     '\\.(css)$': '<rootDir>/node_modules/jest-css-modules',
-    '^~/(.*)$': '<rootDir>/src/$1',
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
   testPathIgnorePatterns: [
     '<rootDir>/.next/',
     '<rootDir>/node_modules/',
     '<rootDir>/cypress/',
   ],
+  testEnvironment: 'jest-environment-jsdom',
 };

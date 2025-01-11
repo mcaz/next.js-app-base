@@ -1,0 +1,1 @@
+export { RestServiceBase } from './RestServiceBase';
